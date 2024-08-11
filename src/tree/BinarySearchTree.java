@@ -1,6 +1,10 @@
 package tree;
 
 
+import iterators.PreOrderIterator;
+import iterators.InOrderIterator;
+import iterators.TreeIterator;
+
 public class BinarySearchTree <T extends Comparable<T>>  {
     private Node<T> root;
     
@@ -15,7 +19,15 @@ public class BinarySearchTree <T extends Comparable<T>>  {
     public boolean isEmpty() {
     	return root == null;
     }
-    
+
+	public TreeIterator<T> getPreOrderIterator() {
+		return new PreOrderIterator<>(root);
+	}
+
+	public TreeIterator<T> getInOrderIterator() {
+		return new InOrderIterator<>(root);
+	}
+
     /**
      * Retorna a carga de um nó correspondente à chave de busca
      * @param value

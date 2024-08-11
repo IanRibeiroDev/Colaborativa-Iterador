@@ -9,7 +9,7 @@ package tree;
  * @param <T>
  */
 public class Node<T extends Comparable<T>> {
-    T value;
+     T value;
     Node<T> left;
     Node<T> right;
 
@@ -17,6 +17,20 @@ public class Node<T extends Comparable<T>> {
         this.value = value;
         right = null;
         left = null;
+    }
+    // Getter para o valor
+    public T getValue() {
+        return value;
+    }
+
+    // Getter para o nó esquerdo
+    public Node<T> getLeft() {
+        return left;
+    }
+
+    // Getter para o nó direito
+    public Node<T> getRight() {
+        return right;
     }
     
     public String toString() {
