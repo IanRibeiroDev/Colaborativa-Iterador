@@ -1,10 +1,7 @@
 package tree;
 
 
-import iterators.PreOrderIterator;
-import iterators.InOrderIterator;
-import iterators.PosOrderIterator;
-import iterators.TreeIterator;
+import iterators.*;
 
 public class BinarySearchTree <T extends Comparable<T>>  {
     private Node<T> root;
@@ -31,6 +28,10 @@ public class BinarySearchTree <T extends Comparable<T>>  {
 
 	public TreeIterator<T> getPosOrderIterator() {
 		return new PosOrderIterator<>(root);
+	}
+
+	public TreeIterator<T> getLevelOrderIterator() {
+		return new LevelOrderIterator<>(root);
 	}
 
     /**
