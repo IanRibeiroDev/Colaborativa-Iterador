@@ -4,13 +4,11 @@ import tree.BinarySearchTree;
 
 public class MainIterator {
     public static void main(String[] args) {
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>(10);
-        bst.add(5);
-        bst.add(15);
-        bst.add(3);
-        bst.add(7);
-        bst.add(13);
-        bst.add(18);
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>(30);
+        bst.add(80);
+        bst.add(20);
+        bst.add(95);
+        bst.add(90);
 
         System.out.println("Pre-order traversal:");
         TreeIterator<Integer> preOrderIterator = bst.getPreOrderIterator();
@@ -23,6 +21,13 @@ public class MainIterator {
         TreeIterator<Integer> inOrderIterator = bst.getInOrderIterator();
         while (inOrderIterator.hasNext()) {
             System.out.print(inOrderIterator.next() + " ");
+        }
+        System.out.println();
+
+        System.out.println("Pos-order traversal:");
+        TreeIterator<Integer> posOrderIterator = bst.getPosOrderIterator();
+        while (posOrderIterator.hasNext()) {
+            System.out.print(posOrderIterator.next() + " ");
         }
     }
 }

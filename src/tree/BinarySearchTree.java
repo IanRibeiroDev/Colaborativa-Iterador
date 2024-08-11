@@ -3,6 +3,7 @@ package tree;
 
 import iterators.PreOrderIterator;
 import iterators.InOrderIterator;
+import iterators.PosOrderIterator;
 import iterators.TreeIterator;
 
 public class BinarySearchTree <T extends Comparable<T>>  {
@@ -26,6 +27,10 @@ public class BinarySearchTree <T extends Comparable<T>>  {
 
 	public TreeIterator<T> getInOrderIterator() {
 		return new InOrderIterator<>(root);
+	}
+
+	public TreeIterator<T> getPosOrderIterator() {
+		return new PosOrderIterator<>(root);
 	}
 
     /**
