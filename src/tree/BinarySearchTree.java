@@ -1,9 +1,10 @@
 package tree;
 
 
+import factory.TreeIteratorFactory;
 import iterators.*;
 
-public class BinarySearchTree <T extends Comparable<T>>  {
+public class BinarySearchTree<T extends Comparable<T>> implements Tree {
     private Node<T> root;
     
     public BinarySearchTree( T value) {
@@ -18,27 +19,22 @@ public class BinarySearchTree <T extends Comparable<T>>  {
     	return root == null;
     }
 
-	public TreeIterator<T> getPreOrderIterator() {
-		return new PreOrderIterator<>(root);
+	public TreeIterator<T> createIterator(String type) {
+		TreeIteratorFactory factory = new TreeIteratorFactory();
+		return factory.createIterator(type, this.root);
 	}
 
-	public TreeIterator<T> getInOrderIterator() {
-		return new InOrderIterator<>(root);
+	public BinarySearchTree<T> clone() {
+		TreeIterator<T> originalIterator = this.createIterator("Pre");
+		BinarySearchTree<T> clone = new BinarySearchTree<>(originalIterator.next());
+
+		while(originalIterator.hasNext()) {
+			clone.add(originalIterator.next());
+		}
+
+		return clone;
 	}
 
-	public TreeIterator<T> getPosOrderIterator() {
-		return new PosOrderIterator<>(root);
-	}
-
-	public TreeIterator<T> getLevelOrderIterator() {
-		return new LevelOrderIterator<>(root);
-	}
-
-    /**
-     * Retorna a carga de um nó correspondente à chave de busca
-     * @param value
-     * @return
-     */
 	public T search(T value)
 	{
 		if (! isEmpty()) {
@@ -89,7 +85,7 @@ public class BinarySearchTree <T extends Comparable<T>>  {
     private Node<T> addRecursive(Node<T> root, T value) {
       // if tree is empty
       if (root == null) { 
-          return new Node<T>(value); 
+          return new Node<T>(value);
       } else if (value.compareTo(root.value) < 0) {
     	  root.left = addRecursive(root.left, value);
       } else if (value.compareTo(root.value) > 0 ) {     //insert in the left subtree
@@ -99,12 +95,7 @@ public class BinarySearchTree <T extends Comparable<T>>  {
       }
       return root;
     }
-    
-	/**
-	 * Removes a node from the binary search tree and return it
-	 * @param data data of type T that implements the Comparable interface
-	 * @return void
-	 */
+
 	public T delete(T key)
 	{
 
