@@ -3,6 +3,7 @@ package tree;
 
 import factory.TreeIteratorFactory;
 import iterators.*;
+import prototype.Prototype;
 
 public class BinarySearchTree<T extends Comparable<T>> implements Tree {
     private Node<T> root;
@@ -24,7 +25,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree {
 		return factory.createIterator(type, this.root);
 	}
 
-	public BinarySearchTree<T> clone() {
+	public Prototype clone() {
 		TreeIterator<T> originalIterator = this.createIterator("Pre");
 		BinarySearchTree<T> clone = new BinarySearchTree<>(originalIterator.next());
 

@@ -44,7 +44,7 @@ public class MainIterator {
         System.out.println();
 
         System.out.println("Criando clone..........");
-        BinarySearchTree<Integer> clone = bst.clone();
+        BinarySearchTree<Integer> clone = (BinarySearchTree<Integer>) bst.clone();
         System.out.println("Clone criado!\n");
 
         System.out.println("Clone pré-ordem:");
